@@ -1,4 +1,4 @@
-# Eduardo Moguillansky -- ZAEHMUNGEN #2 (Bogenwechsel)
+## Eduardo Moguillansky – ZAEHMUNGEN #2 (Bogenwechsel)
 
 MIDI keyboard patch -- Version 4.1
 Should be used inside CsoundQt
