@@ -11,18 +11,26 @@
 	Should be used inside CsoundQt
 	
 	Needs: 
+
 	* CsoundQt version >= 1.1.0
 		(download from https://github.com/CsoundQt/CsoundQt/releases)
-	* csound version >= 6.16
+	* csound version >= 6.18
 	       
 	Hardware:
 		* a MIDI keyboard with at least 67 keys
 		* an expression pedal connected to control the overall gain
 		* a sustain pedal is optional (but can be helpful)
 		
+	IO:
+		* No audio inputs are needed.
+		* The output itself is mono: both left and right channels
+		  carry the exact same signal. 
+     * The player should be able to hear herself/himself.
+     * Ideally a set of speaker should be placed behind the player,
+       either on the floor or, ideally, somewhat elevated 
+	       
 */
 
-; sr = 44100
 nchnls = 2
 ksmps = 64    
 0dbfs = 1        
@@ -236,7 +244,7 @@ opcode tableChange, 0, k
 		gk_tableIndex = kindex
 		gk_table = gi_sndfiles[kindex]
 		Stab = gS_tableNames[kindex]
-		println "Setting table to %d (%s)", kindex, Stab
+		; println "Setting table to %d (%s)", kindex, Stab
 		outvalue "table", Stab
 	else
 		println "Table index out of range (%d)\n", kindex
@@ -700,6 +708,12 @@ e
 
 
 
+
+
+
+
+
+
 <bsbPanel>
  <label>Widgets</label>
  <objectName/>
@@ -714,7 +728,7 @@ e
   <g>22</g>
   <b>22</b>
  </bgcolor>
- <bsbObject type="BSBLabel" version="2">
+ <bsbObject version="2" type="BSBLabel">
   <objectName/>
   <x>5</x>
   <y>9</y>
@@ -745,7 +759,7 @@ e
   <borderradius>3</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject type="BSBKnob" version="2">
+ <bsbObject version="2" type="BSBKnob">
   <objectName>randomness</objectName>
   <x>90</x>
   <y>75</y>
@@ -775,7 +789,7 @@ e
   <flatstyle>true</flatstyle>
   <integerMode>false</integerMode>
  </bsbObject>
- <bsbObject type="BSBLabel" version="2">
+ <bsbObject version="2" type="BSBLabel">
   <objectName/>
   <x>90</x>
   <y>135</y>
@@ -789,8 +803,8 @@ e
   <label>Random</label>
   <alignment>center</alignment>
   <valignment>top</valignment>
-  <font>Arial</font>
-  <fontsize>14</fontsize>
+  <font>Liberation Sans</font>
+  <fontsize>12</fontsize>
   <precision>3</precision>
   <color>
    <r>207</r>
@@ -806,7 +820,7 @@ e
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject type="BSBKnob" version="2">
+ <bsbObject version="2" type="BSBKnob">
   <objectName>compRatio</objectName>
   <x>385</x>
   <y>75</y>
@@ -836,7 +850,7 @@ e
   <flatstyle>true</flatstyle>
   <integerMode>false</integerMode>
  </bsbObject>
- <bsbObject type="BSBLabel" version="2">
+ <bsbObject version="2" type="BSBLabel">
   <objectName/>
   <x>370</x>
   <y>135</y>
@@ -851,8 +865,8 @@ e
 Ratio</label>
   <alignment>center</alignment>
   <valignment>top</valignment>
-  <font>Arial</font>
-  <fontsize>14</fontsize>
+  <font>Liberation Sans</font>
+  <fontsize>12</fontsize>
   <precision>3</precision>
   <color>
    <r>255</r>
@@ -868,7 +882,7 @@ Ratio</label>
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject type="BSBLabel" version="2">
+ <bsbObject version="2" type="BSBLabel">
   <objectName/>
   <x>5</x>
   <y>15</y>
@@ -899,7 +913,7 @@ Ratio</label>
   <borderradius>2</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject type="BSBKnob" version="2">
+ <bsbObject version="2" type="BSBKnob">
   <objectName>noteonMinDb</objectName>
   <x>90</x>
   <y>210</y>
@@ -929,7 +943,7 @@ Ratio</label>
   <flatstyle>true</flatstyle>
   <integerMode>true</integerMode>
  </bsbObject>
- <bsbObject type="BSBLabel" version="2">
+ <bsbObject version="2" type="BSBLabel">
   <objectName/>
   <x>85</x>
   <y>270</y>
@@ -943,8 +957,8 @@ Ratio</label>
   <label>Min Amplitude (dB)</label>
   <alignment>center</alignment>
   <valignment>top</valignment>
-  <font>Arial</font>
-  <fontsize>14</fontsize>
+  <font>Liberation Sans</font>
+  <fontsize>12</fontsize>
   <precision>3</precision>
   <color>
    <r>0</r>
@@ -960,7 +974,7 @@ Ratio</label>
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject type="BSBKnob" version="2">
+ <bsbObject version="2" type="BSBKnob">
   <objectName>noteonMaxDb</objectName>
   <x>185</x>
   <y>210</y>
@@ -990,7 +1004,7 @@ Ratio</label>
   <flatstyle>true</flatstyle>
   <integerMode>true</integerMode>
  </bsbObject>
- <bsbObject type="BSBLabel" version="2">
+ <bsbObject version="2" type="BSBLabel">
   <objectName/>
   <x>180</x>
   <y>270</y>
@@ -1004,8 +1018,8 @@ Ratio</label>
   <label>Max Amplitude (dB)</label>
   <alignment>center</alignment>
   <valignment>top</valignment>
-  <font>Arial</font>
-  <fontsize>14</fontsize>
+  <font>Liberation Sans</font>
+  <fontsize>12</fontsize>
   <precision>3</precision>
   <color>
    <r>0</r>
@@ -1021,7 +1035,7 @@ Ratio</label>
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject type="BSBController" version="2">
+ <bsbObject version="2" type="BSBController">
   <objectName/>
   <x>35</x>
   <y>105</y>
@@ -1058,7 +1072,7 @@ Ratio</label>
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject type="BSBScrollNumber" version="2">
+ <bsbObject version="2" type="BSBScrollNumber">
   <objectName>peaktext</objectName>
   <x>35</x>
   <y>80</y>
@@ -1092,7 +1106,7 @@ Ratio</label>
   <randomizable group="0">false</randomizable>
   <mouseControl act=""/>
  </bsbObject>
- <bsbObject type="BSBScrollNumber" version="2">
+ <bsbObject version="2" type="BSBScrollNumber">
   <objectName>rmstext</objectName>
   <x>35</x>
   <y>265</y>
@@ -1126,7 +1140,7 @@ Ratio</label>
   <randomizable group="0">false</randomizable>
   <mouseControl act=""/>
  </bsbObject>
- <bsbObject type="BSBKnob" version="2">
+ <bsbObject version="2" type="BSBKnob">
   <objectName>masterGain</objectName>
   <x>380</x>
   <y>210</y>
@@ -1156,7 +1170,7 @@ Ratio</label>
   <flatstyle>true</flatstyle>
   <integerMode>true</integerMode>
  </bsbObject>
- <bsbObject type="BSBLabel" version="2">
+ <bsbObject version="2" type="BSBLabel">
   <objectName/>
   <x>355</x>
   <y>270</y>
@@ -1188,7 +1202,7 @@ Ratio</label>
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject type="BSBKnob" version="2">
+ <bsbObject version="2" type="BSBKnob">
   <objectName>compThresh</objectName>
   <x>285</x>
   <y>75</y>
@@ -1201,7 +1215,7 @@ Ratio</label>
   <description>Compression Threshold (dB)</description>
   <minimum>-48.00000000</minimum>
   <maximum>0.00000000</maximum>
-  <value>-11.70240000</value>
+  <value>-16.20480000</value>
   <mode>lin</mode>
   <mouseControl act="">continuous</mouseControl>
   <resolution>0.01000000</resolution>
@@ -1218,7 +1232,7 @@ Ratio</label>
   <flatstyle>true</flatstyle>
   <integerMode>true</integerMode>
  </bsbObject>
- <bsbObject type="BSBLabel" version="2">
+ <bsbObject version="2" type="BSBLabel">
   <objectName/>
   <x>270</x>
   <y>135</y>
@@ -1234,8 +1248,8 @@ Threshold
 (dB)</label>
   <alignment>center</alignment>
   <valignment>top</valignment>
-  <font>Arial</font>
-  <fontsize>14</fontsize>
+  <font>Liberation Sans</font>
+  <fontsize>12</fontsize>
   <precision>3</precision>
   <color>
    <r>255</r>
@@ -1251,7 +1265,7 @@ Threshold
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject type="BSBKnob" version="2">
+ <bsbObject version="2" type="BSBKnob">
   <objectName>compGainComp</objectName>
   <x>185</x>
   <y>75</y>
@@ -1281,10 +1295,10 @@ Threshold
   <flatstyle>true</flatstyle>
   <integerMode>true</integerMode>
  </bsbObject>
- <bsbObject type="BSBLabel" version="2">
+ <bsbObject version="2" type="BSBLabel">
   <objectName/>
   <x>170</x>
-  <y>135</y>
+  <y>136</y>
   <width>91</width>
   <height>52</height>
   <uuid>{b961b102-7e01-426d-952b-f1f95b4deea5}</uuid>
@@ -1297,8 +1311,8 @@ Pre Gain
 (dB)</label>
   <alignment>center</alignment>
   <valignment>top</valignment>
-  <font>Arial</font>
-  <fontsize>14</fontsize>
+  <font>Liberation Sans</font>
+  <fontsize>12</fontsize>
   <precision>3</precision>
   <color>
    <r>255</r>
@@ -1314,7 +1328,7 @@ Pre Gain
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject type="BSBLabel" version="2">
+ <bsbObject version="2" type="BSBLabel">
   <objectName/>
   <x>60</x>
   <y>335</y>
@@ -1345,7 +1359,7 @@ Pre Gain
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject type="BSBLabel" version="2">
+ <bsbObject version="2" type="BSBLabel">
   <objectName/>
   <x>245</x>
   <y>335</y>
@@ -1376,7 +1390,7 @@ Pre Gain
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject type="BSBGraph" version="2">
+ <bsbObject version="2" type="BSBGraph">
   <objectName>graph1</objectName>
   <x>60</x>
   <y>360</y>
@@ -1398,12 +1412,12 @@ Pre Gain
   <showSelector>false</showSelector>
   <showGrid>false</showGrid>
   <showTableInfo>false</showTableInfo>
-  <showScrollbars>true</showScrollbars>
-  <enableTables>true</enableTables>
+  <showScrollbars>false</showScrollbars>
+  <enableTables>false</enableTables>
   <enableDisplays>true</enableDisplays>
   <all>true</all>
  </bsbObject>
- <bsbObject type="BSBDisplay" version="2">
+ <bsbObject version="2" type="BSBDisplay">
   <objectName>table</objectName>
   <x>70</x>
   <y>455</y>
@@ -1434,10 +1448,10 @@ Pre Gain
   <borderradius>3</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject type="BSBLabel" version="2">
+ <bsbObject version="2" type="BSBLabel">
   <objectName/>
   <x>65</x>
-  <y>480</y>
+  <y>479</y>
   <width>60</width>
   <height>30</height>
   <uuid>{b51c60ce-4fc1-4041-ab66-ad6e37bbc698}</uuid>
@@ -1448,8 +1462,8 @@ Pre Gain
   <label>Soundfile</label>
   <alignment>center</alignment>
   <valignment>center</valignment>
-  <font>Arial</font>
-  <fontsize>13</fontsize>
+  <font>Liberation Sans</font>
+  <fontsize>12</fontsize>
   <precision>3</precision>
   <color>
    <r>209</r>
@@ -1465,7 +1479,7 @@ Pre Gain
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject type="BSBDisplay" version="2">
+ <bsbObject version="2" type="BSBDisplay">
   <objectName>rateFactor</objectName>
   <x>355</x>
   <y>455</y>
@@ -1496,7 +1510,7 @@ Pre Gain
   <borderradius>3</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject type="BSBLabel" version="2">
+ <bsbObject version="2" type="BSBLabel">
   <objectName/>
   <x>340</x>
   <y>480</y>
@@ -1510,8 +1524,8 @@ Pre Gain
   <label>Rate Factor</label>
   <alignment>center</alignment>
   <valignment>center</valignment>
-  <font>Arial</font>
-  <fontsize>13</fontsize>
+  <font>Liberation Sans</font>
+  <fontsize>12</fontsize>
   <precision>3</precision>
   <color>
    <r>209</r>
@@ -1527,7 +1541,7 @@ Pre Gain
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject type="BSBDisplay" version="2">
+ <bsbObject version="2" type="BSBDisplay">
   <objectName>grainDuration</objectName>
   <x>165</x>
   <y>455</y>
@@ -1558,7 +1572,7 @@ Pre Gain
   <borderradius>3</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject type="BSBLabel" version="2">
+ <bsbObject version="2" type="BSBLabel">
   <objectName/>
   <x>150</x>
   <y>480</y>
@@ -1572,8 +1586,8 @@ Pre Gain
   <label>Grain Dur. (ms)</label>
   <alignment>center</alignment>
   <valignment>center</valignment>
-  <font>Arial</font>
-  <fontsize>13</fontsize>
+  <font>Liberation Sans</font>
+  <fontsize>12</fontsize>
   <precision>3</precision>
   <color>
    <r>209</r>
@@ -1589,7 +1603,7 @@ Pre Gain
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject type="BSBDisplay" version="2">
+ <bsbObject version="2" type="BSBDisplay">
   <objectName>grainRate</objectName>
   <x>260</x>
   <y>455</y>
@@ -1620,7 +1634,7 @@ Pre Gain
   <borderradius>3</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject type="BSBLabel" version="2">
+ <bsbObject version="2" type="BSBLabel">
   <objectName/>
   <x>245</x>
   <y>480</y>
@@ -1634,8 +1648,8 @@ Pre Gain
   <label>Grain Rate (hz)</label>
   <alignment>center</alignment>
   <valignment>center</valignment>
-  <font>Arial</font>
-  <fontsize>13</fontsize>
+  <font>Liberation Sans</font>
+  <fontsize>12</fontsize>
   <precision>3</precision>
   <color>
    <r>209</r>
@@ -1651,7 +1665,7 @@ Pre Gain
   <borderradius>1</borderradius>
   <borderwidth>0</borderwidth>
  </bsbObject>
- <bsbObject type="BSBController" version="2">
+ <bsbObject version="2" type="BSBController">
   <objectName/>
   <x>15</x>
   <y>105</y>
@@ -1668,7 +1682,7 @@ Pre Gain
   <yMin>0.00000000</yMin>
   <yMax>1.00000000</yMax>
   <xValue>0.00000000</xValue>
-  <yValue>0.10736440</yValue>
+  <yValue>1.00000000</yValue>
   <type>fill</type>
   <pointsize>1</pointsize>
   <fadeSpeed>0.00000000</fadeSpeed>
@@ -1688,7 +1702,7 @@ Pre Gain
   </bgcolor>
   <bgcolormode>false</bgcolormode>
  </bsbObject>
- <bsbObject type="BSBController" version="2">
+ <bsbObject version="2" type="BSBController">
   <objectName/>
   <x>440</x>
   <y>460</y>
@@ -1725,7 +1739,7 @@ Pre Gain
   </bgcolor>
   <bgcolormode>true</bgcolormode>
  </bsbObject>
- <bsbObject type="BSBGraph" version="2">
+ <bsbObject version="2" type="BSBGraph">
   <objectName>graph2</objectName>
   <x>245</x>
   <y>360</y>
@@ -1745,10 +1759,10 @@ Pre Gain
   <modex>lin</modex>
   <modey>lin</modey>
   <showSelector>false</showSelector>
-  <showGrid>true</showGrid>
+  <showGrid>false</showGrid>
   <showTableInfo>false</showTableInfo>
-  <showScrollbars>true</showScrollbars>
-  <enableTables>true</enableTables>
+  <showScrollbars>false</showScrollbars>
+  <enableTables>false</enableTables>
   <enableDisplays>true</enableDisplays>
   <all>true</all>
  </bsbObject>
